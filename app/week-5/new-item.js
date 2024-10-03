@@ -93,7 +93,6 @@ export default function NewItem() {
         type="submit"
         value="+"
         className="m-2 bg-blue-400 hover:bg-blue-500 focus:ring-2 focus:ring-blue-300 w-30 h-10 rounded-md font-bold text-white shadow-md ml-5 mr-5 mb-5"
-        onClick={(event) => handleSubmit(event)}
       />
     </form>
   );
