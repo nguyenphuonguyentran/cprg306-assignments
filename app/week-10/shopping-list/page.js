@@ -7,10 +7,20 @@ import { addItem, getItems } from "../_services/shopping-list-service";
 import MealIdeas from "./meal-ideas";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useUserAuth } from "../_utils/auth-context";
 
 export default function Page() {
   const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState(null);
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+
+  const login = async () => {
+    await gitHubSignIn();
+  };
+
+  const logout = async () => {
+    await firebaseSignOut();
+  };
 
   const handleAddItem = async (item) => {
     try {
@@ -47,7 +57,7 @@ export default function Page() {
   }, [loadItems]);
 
   return (
-    <main className="flex bg-center bg-cover bg-gradient-to-r from-cyan-700 to-violet-200 w-screen h-screen">
+    <main className="flex bg-center bg-cover bg-gradient-to-r from-cyan-700 to-violet-200 w-full h-full">
       <div className="flex w-full">
         <div className="w-1/2 pr-4">
           <div className="flex flex-col justify-center items-center">
